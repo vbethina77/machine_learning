@@ -8,9 +8,6 @@ m = length(y); % number of training examples
 J_history = zeros(num_iters, 1);
 theta0 = theta(1,1);
 theta1 = theta(2,1);
-
-numberOfFeatures = size(X, 2)
-%theta = zeros(numberOfFeatures, 1);
 for iter = 1:num_iters
 
     % ====================== YOUR CODE HERE ======================
@@ -23,15 +20,9 @@ for iter = 1:num_iters
 
     hofx = X*theta;
     difference = hofx - y;
-    for j = 1:numberOfFeatures
-        sumOfValues=0;
-
-        for i = 1:m
-           sumOfValues = sumOfValues + difference(i, 1)*X(i, j);
-        end
-        theta(j, 1) = theta(j, 1) - (alpha * sumOfValues) / m;
-    end
     
+    temp = transpose(X) * difference;
+    theta = theta - (alpha/m) * temp;
     % ============================================================
 
     % Save the cost J in every iteration    
