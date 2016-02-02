@@ -40,3 +40,12 @@ for iter = 1:num_iters
 end
 
 end
+
+%% Run tests by typing: 'test gradientDescent' in Octave
+
+%!shared theta, thetaexpected, J_hist
+%! thetaexpected = [5.21475; -0.57335];
+%! [theta J_hist] = gradientDescent([1 5; 1 2; 1 4; 1 5],[1 6 4 2]',[0 0]',0.01,1000);
+%!assert(theta, thetaexpected, 1e-4);
+%!assert(J_hist(1000), 0.85426, 1e-4);
+

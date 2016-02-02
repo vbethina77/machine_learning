@@ -27,9 +27,9 @@ J = sumofsquare/(2*m);
 end
 
 %% Define unit tests, see also https://www.gnu.org/software/octave/doc/interpreter/Test-Functions.html
-%% Can be run by typing: 'test costCost' in Octave
+%% Can be run by typing: 'test computeCost' in Octave
 
-%!shared tol
-%! tol = 5e-05
-%! J = computeCost( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2])
-%!assert(J, 11.9450)
+%!assert( computeCost( [1 2; 1 3; 1 4; 1 5], [7;6;5;4], [0.1;0.2] )
+%!        ,11.9450, -eps )
+%!assert( computeCost( [1 2 3; 1 3 4; 1 4 5; 1 5 6], [7;6;5;4],
+%!        [0.1;0.2;0.3] ), 7.0175, -eps )
