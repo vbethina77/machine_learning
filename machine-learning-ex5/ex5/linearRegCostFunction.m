@@ -20,14 +20,23 @@ grad = zeros(size(theta));
 %
 
 
+hypothesis = X*theta;
+difference = hypothesis - y;
+sumofsquares = sum(difference.^2);
+non_reg_part = sumofsquares/(2*m);
 
+theta_part = theta(2:end);
+theta_sqr = theta_part.^2;
+reg_part = (lambda / (2*m))*sum(theta_sqr);
 
+J = non_reg_part + reg_part;
 
+modifiedThetaForGrad = theta;
+modifiedThetaForGrad(1,1) = 0;
 
-
-
-
-
+grad_non_reg = (X'*difference) / m;
+grad_reg = (lambda/m)*modifiedThetaForGrad;
+grad = grad_non_reg + grad_reg;
 
 
 % =========================================================================

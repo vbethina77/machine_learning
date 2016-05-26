@@ -164,7 +164,7 @@ pause;
 %  lambda to see how the fit and learning curve change.
 %
 
-lambda = 0;
+lambda = 1;
 [theta] = trainLinearReg(X_poly, y, lambda);
 
 % Plot training data and fit
@@ -217,4 +217,19 @@ for i = 1:length(lambda_vec)
 end
 
 fprintf('Program paused. Press enter to continue.\n');
+pause;
+
+%% =========== Part 9: Computing test set error =============
+%  You will now implement validationCurve to test various values of 
+%  lambda on a validation set. You will then use this to select the
+%  "best" lambda value.
+%
+
+lambda = 3;
+[theta] = trainLinearReg(X_poly, y, lambda);
+
+[J, grad] = linearRegCostFunction(X_poly_test, ytest, theta, 0);
+
+fprintf(['Cost at theta = [1 ; 1]: %f '...
+         '\n(this value should be about 3.859888)\n'], J);
 pause;

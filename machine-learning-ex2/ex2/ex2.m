@@ -103,7 +103,7 @@ ylabel('Exam 2 score')
 % Specified in plot order
 legend('Admitted', 'Not admitted')
 hold off;
-
+fig2plotly();
 fprintf('\nProgram paused. Press enter to continue.\n');
 pause;
 
